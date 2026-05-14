@@ -69,3 +69,17 @@ document.getElementById("binaria").addEventListener("click", () => {
     );
 
 });
+
+// ==========================================
+// PROGRAMA 6 - COLA CIRCULAR
+// ==========================================
+
+document.getElementById("cola").addEventListener("click", () => {
+
+    window.open(
+        "cola.html",
+        "Cola",
+        "width=700,height=600"
+    );
+
+});
