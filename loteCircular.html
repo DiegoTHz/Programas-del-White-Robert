@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lote Circular de Coches</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .barraSuperior{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #cerrar{
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #cerrar:hover{
+            background-color: darkred;
+        }
+
+        #fechaHora{
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        h1{
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        .contenedor{
+            text-align: center;
+            margin-top: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        input, select{
+            padding: 12px;
+            width: 220px;
+            font-size: 16px;
+            margin: 8px 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button{
+            padding: 12px 22px;
+            margin: 10px 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            transition: 0.3s;
+        }
+
+        button:hover{
+            background-color: #0056b3;
+        }
+
+        #btnVender{
+            background-color: #dc3545;
+        }
+
+        #btnVender:hover{
+            background-color: #c82333;
+        }
+
+        #btnLimpiar{
+            background-color: #28a745;
+        }
+
+        #btnLimpiar:hover{
+            background-color: #218838;
+        }
+
+        .resumen{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .tarjeta{
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .tarjeta h3{
+            margin-top: 0;
+            color: #007bff;
+        }
+
+        .lista{
+            margin-top: 25px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-height: 320px;
+            overflow-y: auto;
+        }
+
+        .itemCoche{
+            border-bottom: 1px solid #eee;
+            padding: 12px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .itemCoche:last-child{
+            border-bottom: none;
+        }
+
+        .itemCoche strong{
+            color: #007bff;
+        }
+
+        #mensaje{
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+            font-weight: bold;
+            min-height: 24px;
+        }
+
+        .info{
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+            background-color: #e7f3ff;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .info h3{
+            margin-top: 0;
+            color: #007bff;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="barraSuperior">
+        <div id="fechaHora"></div>
+        <button id="cerrar">Adiós</button>
+    </div>
+
+    <h1>Lote Circular de Coches</h1>
+
+    <div class="contenedor">
+
+        <div>
+            <select id="tamano">
+                <option value="Grande">Grande</option>
+                <option value="Mediano">Mediano</option>
+                <option value="Chico">Chico</option>
+            </select>
+        </div>
+
+        <div>
+            <input type="text" id="color" placeholder="Color">
+            <input type="text" id="modelo" placeholder="Modelo">
+            <input type="number" id="anio" placeholder="Año" min="1900" max="2100">
+        </div>
+
+        <div>
+            <button id="btnComprar">Comprar</button>
+            <button id="btnVender">Vender</button>
+            <button id="btnLimpiar">Limpiar Lista</button>
+        </div>
+
+        <div id="mensaje"></div>
+
+    </div>
+
+    <div class="resumen">
+        <div class="tarjeta">
+            <h3>Total Comprados</h3>
+            <div id="totalComprados">0</div>
+        </div>
+        <div class="tarjeta">
+            <h3>Total Vendidos</h3>
+            <div id="totalVendidos">0</div>
+        </div>
+        <div class="tarjeta">
+            <h3>Inventario Actual</h3>
+            <div id="inventario">0</div>
+        </div>
+    </div>
+
+    <div class="resumen">
+        <div class="tarjeta">
+            <h3>Grandes</h3>
+            <div id="contadorGrande">0</div>
+        </div>
+        <div class="tarjeta">
+            <h3>Medianos</h3>
+            <div id="contadorMediano">0</div>
+        </div>
+        <div class="tarjeta">
+            <h3>Chicos</h3>
+            <div id="contadorChico">0</div>
+        </div>
+    </div>
+
+    <div class="lista" id="listaCoches">
+        <h3>Lista de Coches en el Lote</h3>
+        <div id="contenedorCoches"></div>
+    </div>
+
+    <div class="info">
+        <h3>Cómo funciona</h3>
+        <p>Se usa una estructura de lista ligada circular para el lote. Cada coche se agrega al final del circuito y el último nodo apunta al primero.</p>
+        <p>La venta busca el primer coche que coincida con color, modelo y año, luego lo elimina del lote y actualiza el control de inventario.</p>
+        <p>Capacidad máxima: 100 coches.</p>
+    </div>
+
+    <script src="loteCircular.js"></script>
+
+</body>
+</html>

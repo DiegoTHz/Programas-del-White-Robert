@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cola Ligada Doble Entrada</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .barraSuperior{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #cerrar{
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #cerrar:hover{
+            background-color: darkred;
+        }
+
+        #fechaHora{
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        h1{
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        .contenedor{
+            text-align: center;
+            margin-top: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        input{
+            padding: 12px;
+            width: 250px;
+            font-size: 16px;
+            margin: 10px 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button{
+            padding: 12px 20px;
+            margin: 10px 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            transition: 0.3s;
+        }
+
+        button:hover{
+            background-color: #0056b3;
+        }
+
+        #btnEliminarFrente, #btnEliminarFinal{
+            background-color: #dc3545;
+        }
+
+        #btnEliminarFrente:hover, #btnEliminarFinal:hover{
+            background-color: #c82333;
+        }
+
+        #btnLimpiar{
+            background-color: #28a745;
+        }
+
+        #btnLimpiar:hover{
+            background-color: #218838;
+        }
+
+        .cola{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            min-height: 120px;
+            flex-wrap: wrap;
+        }
+
+        .nodo{
+            display: flex;
+            align-items: center;
+            margin: 10px;
+        }
+
+        .elemento{
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px 15px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            position: relative;
+            min-width: 60px;
+        }
+
+        .flecha{
+            font-size: 24px;
+            color: #007bff;
+            margin: 0 10px;
+        }
+
+        .null{
+            color: #666;
+            font-style: italic;
+        }
+
+        .front-label{
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #28a745;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .back-label{
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #dc3545;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        #mensaje{
+            text-align: center;
+            font-size: 18px;
+            margin-top: 15px;
+            font-weight: bold;
+            min-height: 25px;
+        }
+
+        .info{
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+            background-color: #e7f3ff;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .info h3{
+            margin-top: 0;
+            color: #007bff;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="barraSuperior">
+
+        <div id="fechaHora"></div>
+
+        <button id="cerrar">
+            Adiós
+        </button>
+
+    </div>
+
+    <h1>Cola Ligada de Doble Entrada</h1>
+
+    <div class="contenedor">
+
+        <div>
+            <input
+                type="text"
+                id="dato"
+                placeholder="Ingresa un número o texto"
+            >
+        </div>
+
+        <div>
+            <button id="agregarFrente">
+                Agregar al Frente
+            </button>
+
+            <button id="agregarFinal">
+                Agregar al Final
+            </button>
+        </div>
+
+        <div>
+            <button id="btnEliminarFrente">
+                Eliminar del Frente
+            </button>
+
+            <button id="btnEliminarFinal">
+                Eliminar del Final
+            </button>
+
+            <button id="btnLimpiar">
+                Limpiar Cola
+            </button>
+        </div>
+
+        <div id="mensaje"></div>
+
+    </div>
+
+    <div class="cola" id="cola">
+        <div class="null">NULL ← FRONT | BACK → NULL</div>
+    </div>
+
+    <div class="info">
+
+        <h3>Información</h3>
+
+        <div>
+            <strong>Estructura:</strong>
+            <div>
+                • Implementación con nodos ligados (prev y next)
+                <br>
+                • Cada nodo contiene el dato y referencias a nodos anterior y siguiente
+                <br>
+                • FRONT apunta al primer nodo, BACK al último
+                <br>
+                • Operaciones eficientes en ambos extremos
+            </div>
+        </div>
+
+        <div>
+            <strong>Operaciones:</strong>
+            <div>
+                • Agregar al Frente: Inserta nuevo nodo al inicio
+                <br>
+                • Agregar al Final: Inserta nuevo nodo al final
+                <br>
+                • Eliminar del Frente: Remueve el nodo del inicio
+                <br>
+                • Eliminar del Final: Remueve el nodo del final
+                <br>
+                • Acepta números y cadenas de texto
+            </div>
+        </div>
+
+    </div>
+
+    <script src="colaLigada.js"></script>
+
+</body>
+</html>

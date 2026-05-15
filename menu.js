@@ -125,3 +125,73 @@ document.getElementById("colaDoble").addEventListener("click", () => {
     );
 
 });
+
+// ==========================================
+// PROGRAMA 10 - COLA LIGADA DOBLE ENTRADA
+// ==========================================
+
+document.getElementById("colaLigada").addEventListener("click", () => {
+
+    window.open(
+        "colaLigada.html",
+        "ColaLigada",
+        "width=1000,height=700"
+    );
+
+});
+
+// ==========================================
+// PROGRAMA 11 - COLA CIRCULAR LIGADA
+// ==========================================
+
+document.getElementById("colaCircularLigada").addEventListener("click", () => {
+
+    window.open(
+        "colaCircularLigada.html",
+        "ColaCircularLigada",
+        "width=900,height=700"
+    );
+
+});
+
+// ==========================================
+// PROGRAMA 12 - COLA DOBLEMENTE LIGADA
+// ==========================================
+
+document.getElementById("colaDobleLigada").addEventListener("click", () => {
+
+    window.open(
+        "colaDobleLigada.html",
+        "ColaDobleLigada",
+        "width=1000,height=700"
+    );
+
+});
+
+// ==========================================
+// PROGRAMA 13 - LOTE CIRCULAR DE COCHES
+// ==========================================
+
+document.getElementById("loteCircular").addEventListener("click", () => {
+
+    window.open(
+        "loteCircular.html",
+        "LoteCircular",
+        "width=1000,height=750"
+    );
+
+});
+
+// ==========================================
+// PROGRAMA 14 - TIENDA MULTILIGA
+// ==========================================
+
+document.getElementById("tiendaMultiliga").addEventListener("click", () => {
+
+    window.open(
+        "tiendaMultiliga.html",
+        "TiendaMultiliga",
+        "width=1100,height=800"
+    );
+
+});
