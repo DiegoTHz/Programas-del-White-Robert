@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memoria Dinámica</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .barraSuperior{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #cerrar{
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #cerrar:hover{
+            background-color: darkred;
+        }
+
+        #fechaHora{
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        h1{
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        .contenedor{
+            text-align: center;
+            margin-top: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        input{
+            padding: 12px;
+            width: 300px;
+            font-size: 16px;
+            margin: 10px 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button{
+            padding: 12px 25px;
+            margin: 10px 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            transition: 0.3s;
+        }
+
+        button:hover{
+            background-color: #0056b3;
+        }
+
+        #btnEliminar{
+            background-color: #dc3545;
+        }
+
+        #btnEliminar:hover{
+            background-color: #c82333;
+        }
+
+        #btnLimpiar{
+            background-color: #28a745;
+        }
+
+        #btnLimpiar:hover{
+            background-color: #218838;
+        }
+
+        .pilas{
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .pila{
+            background-color: #f9f9f9;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            padding: 15px;
+            width: 250px;
+            min-height: 300px;
+        }
+
+        .pila h3{
+            text-align: center;
+            margin-top: 0;
+            color: #007bff;
+        }
+
+        .elemento{
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 8px;
+            margin: 5px 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+
+        #mensaje{
+            text-align: center;
+            font-size: 18px;
+            margin-top: 15px;
+            font-weight: bold;
+            min-height: 25px;
+        }
+
+        .info{
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+            background-color: #e7f3ff;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .info h3{
+            margin-top: 0;
+            color: #007bff;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="barraSuperior">
+
+        <div id="fechaHora"></div>
+
+        <button id="cerrar">
+            Adiós
+        </button>
+
+    </div>
+
+    <h1>Memoria Dinámica (30 espacios: 10-10-10)</h1>
+
+    <div class="contenedor">
+
+        <div>
+            <input
+                type="text"
+                id="dato"
+                placeholder="Ingresa un número o texto"
+            >
+        </div>
+
+        <div>
+            <button id="agregar">
+                Agregar
+            </button>
+
+            <button id="btnEliminar">
+                Eliminar
+            </button>
+
+            <button id="btnLimpiar">
+                Limpiar Todo
+            </button>
+        </div>
+
+        <div id="mensaje"></div>
+
+    </div>
+
+    <div class="pilas">
+
+        <div class="pila">
+            <h3>Pila 1 (0/10)</h3>
+            <div id="pila1"></div>
+        </div>
+
+        <div class="pila">
+            <h3>Pila 2 (0/10)</h3>
+            <div id="pila2"></div>
+        </div>
+
+        <div class="pila">
+            <h3>Pila 3 (0/10)</h3>
+            <div id="pila3"></div>
+        </div>
+
+    </div>
+
+    <div class="info">
+
+        <h3>Información</h3>
+
+        <div>
+            <strong>Funcionamiento:</strong>
+            <div>
+                • Las pilas se llenan en orden: Pila 1 → Pila 2 → Pila 3
+                <br>
+                • Cuando una pila está llena, se pasa a la siguiente
+                <br>
+                • Eliminar remueve el último elemento agregado
+                <br>
+                • Acepta números y cadenas de texto
+            </div>
+        </div>
+
+    </div>
+
+    <script src="memoria.js"></script>
+
+</body>
+</html>

@@ -97,3 +97,31 @@ document.getElementById("prefijo").addEventListener("click", () => {
     );
 
 });
+
+// ==========================================
+// PROGRAMA 8 - MEMORIA DINÁMICA
+// ==========================================
+
+document.getElementById("memoria").addEventListener("click", () => {
+
+    window.open(
+        "memoria.html",
+        "Memoria",
+        "width=900,height=700"
+    );
+
+});
+
+// ==========================================
+// PROGRAMA 9 - COLA DE DOBLE ENTRADA
+// ==========================================
+
+document.getElementById("colaDoble").addEventListener("click", () => {
+
+    window.open(
+        "colaDoble.html",
+        "ColaDoble",
+        "width=900,height=700"
+    );
+
+});
