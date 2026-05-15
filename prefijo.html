@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notación Polaca Prefija</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .barraSuperior{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #cerrar{
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #cerrar:hover{
+            background-color: darkred;
+        }
+
+        #fechaHora{
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        h1{
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        .contenedor{
+            text-align: center;
+            margin-top: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        input{
+            padding: 12px;
+            width: 350px;
+            font-size: 16px;
+            margin: 10px 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button{
+            padding: 12px 25px;
+            margin: 10px 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            transition: 0.3s;
+        }
+
+        button:hover{
+            background-color: #0056b3;
+        }
+
+        #btnLimpiar{
+            background-color: #28a745;
+        }
+
+        #btnLimpiar:hover{
+            background-color: #218838;
+        }
+
+        .resultados{
+            margin-top: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .resultado-item{
+            margin: 15px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #007bff;
+            border-radius: 5px;
+        }
+
+        .resultado-titulo{
+            font-weight: bold;
+            color: #007bff;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .resultado-valor{
+            font-size: 18px;
+            font-family: 'Courier New', monospace;
+            color: #333;
+            word-break: break-all;
+        }
+
+        #mensaje{
+            text-align: center;
+            font-size: 18px;
+            margin-top: 15px;
+            font-weight: bold;
+            min-height: 25px;
+        }
+
+        .info{
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+            background-color: #e7f3ff;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .info h3{
+            margin-top: 0;
+            color: #007bff;
+        }
+
+        .operadores{
+            text-align: left;
+            margin: 10px 0;
+        }
+
+        .operadores span{
+            display: inline-block;
+            margin-right: 20px;
+            font-family: monospace;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="barraSuperior">
+
+        <div id="fechaHora"></div>
+
+        <button id="cerrar">
+            Adiós
+        </button>
+
+    </div>
+
+    <h1>Notación Polaca Prefija</h1>
+
+    <div class="contenedor">
+
+        <div>
+            <input
+                type="text"
+                id="ecuacion"
+                placeholder="Ej: 5 + 3 * 2 | a + b * c | (x + y) * z"
+            >
+        </div>
+
+        <div>
+            <button id="convertir">
+                Convertir
+            </button>
+
+            <button id="btnLimpiar">
+                Limpiar
+            </button>
+        </div>
+
+        <div id="mensaje"></div>
+
+    </div>
+
+    <div class="resultados" id="resultados" style="display: none;">
+
+        <div class="resultado-item">
+            <div class="resultado-titulo">Expresión Original (Infija):</div>
+            <div class="resultado-valor" id="infija"></div>
+        </div>
+
+        <div class="resultado-item">
+            <div class="resultado-titulo">Notación Polaca Prefija:</div>
+            <div class="resultado-valor" id="prefija"></div>
+        </div>
+
+        <div class="resultado-item">
+            <div class="resultado-titulo">Notación Polaca Postfija:</div>
+            <div class="resultado-valor" id="postfija"></div>
+        </div>
+
+        <div class="resultado-item">
+            <div class="resultado-titulo">Pasos de Conversión:</div>
+            <div class="resultado-valor" id="pasos" style="font-size: 14px; line-height: 1.6;"></div>
+        </div>
+
+    </div>
+
+    <div class="info">
+
+        <h3>Información</h3>
+
+        <div>
+            <strong>Operadores soportados:</strong>
+            <div class="operadores">
+                <span>+ (suma)</span>
+                <span>- (resta)</span>
+                <span>* (multiplicación)</span>
+                <span>/ (división)</span>
+                <span>^ (potencia)</span>
+            </div>
+        </div>
+
+        <div>
+            <strong>Ejemplos:</strong>
+            <div>
+                • 5 + 3 → + 5 3
+                <br>
+                • a + b * c → + a * b c
+                <br>
+                • (x + y) * z → * + x y z
+                <br>
+                • 2 ^ 3 + 1 → + ^ 2 3 1
+            </div>
+        </div>
+
+    </div>
+
+    <script src="prefijo.js"></script>
+
+</body>
+</html>

@@ -83,3 +83,17 @@ document.getElementById("cola").addEventListener("click", () => {
     );
 
 });
+
+// ==========================================
+// PROGRAMA 7 - NOTACIÓN POLACA PREFIJA
+// ==========================================
+
+document.getElementById("prefijo").addEventListener("click", () => {
+
+    window.open(
+        "prefijo.html",
+        "Prefijo",
+        "width=800,height=800"
+    );
+
+});
