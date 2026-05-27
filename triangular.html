@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz Triangular</title>
+
+    <style>
+        body{ font-family: Arial, sans-serif; background:#f5f5f5; padding:20px }
+        .barraSuperior{ display:flex; justify-content:space-between; align-items:center }
+        #cerrar{ background:red;color:white;border:none;padding:8px 14px;border-radius:8px;cursor:pointer }
+        h1{text-align:center;margin-top:12px}
+        .contenedor{text-align:center;margin-top:16px}
+        input[type="number"], input[type="text"]{ padding:8px; width:130px; margin:6px }
+        button{ padding:8px 12px; margin:6px; cursor:pointer }
+        table{ width:90%; margin:14px auto; border-collapse:collapse; background:white }
+        th,td{ border:1px solid #333; padding:8px; text-align:center }
+        th{ background:#1976d2; color:white }
+        #mensaje{ text-align:center; margin-top:8px; font-weight:bold }
+    </style>
+
+</head>
+<body>
+
+    <div class="barraSuperior">
+        <div id="fechaHora"></div>
+        <button id="cerrar">Cerrar</button>
+    </div>
+
+    <h1>Matriz Triangular y Transpuesta</h1>
+
+    <div class="contenedor">
+        <div>
+            <input type="number" id="filas" placeholder="Filas" min="1">
+            <input type="number" id="columnas" placeholder="Columnas" min="1">
+            <button id="crearMatriz">Definir tamaño</button>
+        </div>
+
+        <hr style="width:90%; margin:10px auto">
+
+        <div>
+            <input type="number" id="filaEntrada" placeholder="Fila (0-index)" min="0">
+            <input type="number" id="colEntrada" placeholder="Columna (0-index)" min="0">
+            <input type="number" id="valorEntrada" placeholder="Valor">
+            <button id="agregarEntrada">Agregar</button>
+        </div>
+
+        <div style="margin-top:8px;">
+            <button id="mostrarOriginal">Mostrar Matriz</button>
+            <button id="triSuperior">Triangular Superior</button>
+            <button id="triInferior">Triangular Inferior</button>
+            <button id="transponer">Mostrar Transpuesta</button>
+            <button id="limpiar">Limpiar</button>
+        </div>
+    </div>
+
+    <div id="mensaje"></div>
+
+    <table id="tablaOriginal" style="display:none;"><thead id="theadOriginal"></thead><tbody id="tbodyOriginal"></tbody></table>
+    <table id="tablaTriangular" style="display:none;"><thead id="theadTri"></thead><tbody id="tbodyTri"></tbody></table>
+    <table id="tablaTranspuesta" style="display:none;"><thead id="theadTrans"></thead><tbody id="tbodyTrans"></tbody></table>
+
+    <script src="triangular.js"></script>
+</body>
+</html>

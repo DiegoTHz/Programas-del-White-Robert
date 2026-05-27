@@ -195,3 +195,33 @@ document.getElementById("tiendaMultiliga").addEventListener("click", () => {
     );
 
 });
+
+
+// ==========================================
+// PROGRAMA 15 - MATRIZ DISPERSA
+// ==========================================
+
+document.getElementById("matrizDispersa").addEventListener("click", () => {
+
+    window.open(
+        "matrizDispersa.html",
+        "MatrizDispersa",
+        "width=900,height=700"
+    );
+
+});
+
+
+// ==========================================
+// PROGRAMA 16 - MATRIZ TRIANGULAR
+// ==========================================
+
+document.getElementById("triangular").addEventListener("click", () => {
+
+    window.open(
+        "triangular.html",
+        "Triangular",
+        "width=900,height=700"
+    );
+
+});
